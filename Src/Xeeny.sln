@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xeeny.Transports", "Xeeny.T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xeeny.Http", "Xeeny.Http\Xeeny.Http.csproj", "{B50B2B78-1045-4915-826E-23D6C6BB3C3F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xeeny.NamedPipes", "Xeeny.NamedPipes\Xeeny.NamedPipes.csproj", "{E556D5B9-D4EE-491A-A86F-86D05F4D75BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{B50B2B78-1045-4915-826E-23D6C6BB3C3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B50B2B78-1045-4915-826E-23D6C6BB3C3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B50B2B78-1045-4915-826E-23D6C6BB3C3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E556D5B9-D4EE-491A-A86F-86D05F4D75BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E556D5B9-D4EE-491A-A86F-86D05F4D75BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E556D5B9-D4EE-491A-A86F-86D05F4D75BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E556D5B9-D4EE-491A-A86F-86D05F4D75BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,6 +94,7 @@ Global
 		{B3B1FB13-86F6-4AD9-9FF2-7B19A3D71B9F} = {410A6F61-9AE0-4A08-BE1E-B45008DD78A7}
 		{73FF9275-0D8C-4EE5-818F-C3DC732C8B8E} = {E311F5F6-0C78-4859-A5D9-948ADC3208D2}
 		{B50B2B78-1045-4915-826E-23D6C6BB3C3F} = {E311F5F6-0C78-4859-A5D9-948ADC3208D2}
+		{E556D5B9-D4EE-491A-A86F-86D05F4D75BD} = {E311F5F6-0C78-4859-A5D9-948ADC3208D2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C83B20B6-D44D-448C-B815-8DCEFC0ABB54}

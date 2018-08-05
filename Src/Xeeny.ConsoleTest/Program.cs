@@ -24,7 +24,7 @@ namespace Xeeny.ConsoleTest
                 var small = 600;
                 var big = 1024 * 2;
                 var framing = FramingProtocol.SerialFragments;
-                await Profile(5000, SocketType.TCP, false, small, big, small, big, framing);
+                await Profile(5000, SocketType.NamedPipe, false, small, big, small, big, framing);
                 //await EndToEndTest();
             }
             catch(Exception ex)
@@ -122,6 +122,21 @@ namespace Xeeny.ConsoleTest
                                         }
                                     });
             }
+            else if (socketType == SocketType.NamedPipe)
+            {
+                hostBuilder.AddNamedPipeServer("testPipe", options =>
+                {
+                    options.ReceiveBufferSize = serverReciveBufferSize;
+                    options.SendBufferSize = serverReciveBufferSize;
+                });
+
+                clientBuilder = new ConnectionBuilder<IService>()
+                    .WithNamedPipeTransport("testPipe", ".", options =>
+                    {
+                        options.SendBufferSize = clientSendBufferSize;
+                        options.ReceiveBufferSize = serverReciveBufferSize;
+                    });
+            }
             else if(socketType == SocketType.TCP)
             {
                 hostBuilder.AddTcpServer(tcpAddress, options =>
@@ -167,7 +182,9 @@ namespace Xeeny.ConsoleTest
 
                 for (int i = 0; i < count; i++)
                 {
-                    var resp = await client.Echo(msg);
+                    string resp = await client.Echo(DateTime.Now.TimeOfDay.ToString());
+
+                    Console.WriteLine(string.Concat("j:", j, " ", "i:", i, " ", resp));
                     //Task.Run(async () =>
                     //{
                     //    var resp = await client.Echo(msg);
@@ -218,13 +235,16 @@ namespace Xeeny.ConsoleTest
         {
             var httpAddress = $"http://localhost/test";
             var tcpAddress = $"tcp://localhost:9999/tcpTest";
-
+            var namedPipe = "test";
+           
             var host = new ServiceHostBuilder<Service>(InstanceMode.PerConnection)
                             .WithCallback<ICallback>()
                             //add websocket server
                             .AddWebSocketServer(httpAddress)
                             //add tcp server
                             .AddTcpServer(tcpAddress)
+                            //add namedpipe server
+                            .AddNamedPipeServer(namedPipe)
                             .WithMessagePackSerializer() //it is the default
                             .WithConsoleLogger()
                             .CreateHost();
@@ -318,7 +338,8 @@ namespace Xeeny.ConsoleTest
     enum SocketType
     {
         TCP,
-        WebSocket
+        WebSocket,
+        NamedPipe
     }
 
 }

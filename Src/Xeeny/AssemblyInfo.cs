@@ -4,3 +4,4 @@
 [assembly: InternalsVisibleTo("Xeeny.Serialization.JsonSerializer")]
 [assembly: InternalsVisibleTo("Xeeny.Serialization.ProtobufSerializer")]
 [assembly: InternalsVisibleTo("Xeeny.Http")]
+[assembly: InternalsVisibleTo("Xeeny.NamedPipes")]
